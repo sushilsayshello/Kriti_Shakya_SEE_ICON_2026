@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Vote for Kriti Shakya | SEE Icon 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4AF37;
+    --gold-light: #F5E27A;
+    --gold-dark: #9A7B1C;
+    --red: #C0212E;
+    --red-light: #E84A57;
+    --black: #0A0A0A;
+    --black-2: #141414;
+    --black-3: #1E1E1E;
+    --white: #FAF6EE;
+    --white-dim: rgba(250,246,238,0.7);
+    --green: #2ECC71;
+    --green-dark: #27AE60;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== LANGUAGE TOGGLE ===== */
+  .lang-toggle {
+    position: fixed; top: 16px; right: 16px; z-index: 1001;
+    display: flex; gap: 4px;
+    background: rgba(20,20,20,0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 24px; padding: 4px;
+  }
+  .lang-btn {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 1px;
+    padding: 8px 14px; border-radius: 20px; border: none; cursor: pointer;
+    background: transparent; color: var(--white-dim); transition: all 0.3s;
+    font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+  }
+  .lang-btn.active { background: var(--gold); color: var(--black); }
+  .lang-btn:hover:not(.active) { color: var(--gold); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 80px 20px 40px; position: relative; overflow: hidden;
+    background: radial-gradient(ellipse at 50% 0%, rgba(192,33,46,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(212,175,55,0.08) 0%, transparent 50%),
+                var(--black);
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='0.8' fill='rgba(212,175,55,0.04)'/%3E%3C/svg%3E") repeat;
+  }
+
+  .hero-img {
+    width: 200px; height: 200px; border-radius: 50%;
+    object-fit: cover; object-position: top;
+    border: 3px solid var(--gold); box-shadow: 0 0 40px rgba(212,175,55,0.3), 0 0 80px rgba(192,33,46,0.15);
+    margin-bottom: 24px; position: relative; z-index: 2;
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 40px rgba(212,175,55,0.3), 0 0 80px rgba(192,33,46,0.15); }
+    50% { box-shadow: 0 0 60px rgba(212,175,55,0.5), 0 0 100px rgba(192,33,46,0.25); }
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, var(--red), #8B0000);
+    color: var(--white); font-weight: 700; font-size: 0.75rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 8px 18px; border-radius: 20px; margin-bottom: 16px;
+    position: relative; z-index: 2;
+    box-shadow: 0 4px 20px rgba(192,33,46,0.4);
+  }
+
+  .hero-name {
+    font-size: clamp(2.2rem, 8vw, 3.5rem); font-weight: 800;
+    line-height: 1.1; text-align: center; margin-bottom: 8px;
+    position: relative; z-index: 2;
+    background: linear-gradient(135deg, var(--white) 0%, var(--gold-light) 50%, var(--gold) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .hero-contest {
+    font-size: 0.85rem; color: var(--white-dim); letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 20px; position: relative; z-index: 2;
+  }
+
+  .hero-countdown {
+    display: flex; gap: 12px; margin-bottom: 28px; position: relative; z-index: 2;
+  }
+  .cd-box {
+    background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 10px; padding: 10px 14px; text-align: center; min-width: 56px;
+  }
+  .cd-num { font-size: 1.4rem; font-weight: 800; color: var(--gold); display: block; line-height: 1; }
+  .cd-label { font-size: 0.55rem; color: var(--white-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+  .hero-deadline {
+    font-size: 0.8rem; color: var(--red-light); text-align: center;
+    margin-bottom: 28px; position: relative; z-index: 2; line-height: 1.6;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+    color: var(--black); font-weight: 700; font-size: 1rem;
+    letter-spacing: 1px; padding: 16px 40px; border-radius: 50px;
+    text-decoration: none; border: none; cursor: pointer;
+    box-shadow: 0 8px 30px rgba(212,175,55,0.35);
+    transition: transform 0.2s, box-shadow 0.2s; position: relative; z-index: 2;
+    width: 100%; max-width: 320px;
+  }
+  .btn-primary:active { transform: scale(0.97); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: transparent; color: var(--gold); font-weight: 600; font-size: 0.9rem;
+    padding: 14px 32px; border-radius: 50px; text-decoration: none;
+    border: 2px solid rgba(212,175,55,0.4); cursor: pointer;
+    transition: all 0.2s; margin-top: 12px; width: 100%; max-width: 320px;
+  }
+  .btn-secondary:active { background: rgba(212,175,55,0.1); }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 48px 20px; max-width: 600px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 28px; }
+  .section-tag {
+    font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--red-light); margin-bottom: 8px; display: block;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 700; margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--white), var(--gold-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .section-desc { color: var(--white-dim); font-size: 0.88rem; line-height: 1.7; }
+
+  /* ===== VIDEO SECTION ===== */
+  .video-container {
+    position: relative; width: 100%; border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(212,175,55,0.2); background: var(--black-3);
+    margin-bottom: 16px;
+  }
+  .video-container video { width: 100%; display: block; border-radius: 16px; }
+  .video-overlay {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.3); pointer-events: none; border-radius: 16px;
+  }
+  .play-btn {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(212,175,55,0.9); display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(4px); border: 2px solid rgba(255,255,255,0.3);
+  }
+  .play-btn::after { content: ''; width: 0; height: 0; border-left: 20px solid var(--black); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 4px; }
+
+  /* ===== PHOTO GALLERY ===== */
+  .gallery-scroll {
+    display: flex; gap: 12px; overflow-x: auto;
+    scroll-snap-type: x mandatory; padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .gallery-scroll::-webkit-scrollbar { display: none; }
+  .gallery-item {
+    flex: 0 0 280px; scroll-snap-align: start;
+    border-radius: 14px; overflow: hidden; position: relative;
+    border: 1px solid rgba(212,175,55,0.15); background: var(--black-3);
+  }
+  .gallery-item img { width: 100%; height: 380px; object-fit: cover; display: block; }
+  .gallery-item .caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 20px 16px 12px; font-size: 0.78rem; color: var(--gold); letter-spacing: 1px;
+  }
+
+  /* ===== VOTE METHODS ===== */
+  .vote-card {
+    background: var(--black-3); border: 1px solid rgba(212,175,55,0.12);
+    border-radius: 16px; padding: 24px; margin-bottom: 16px;
+    position: relative; overflow: hidden;
+  }
+  .vote-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+  }
+  .vote-card-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+  }
+  .vote-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.2);
+    display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  }
+  .vote-card h3 { font-size: 1rem; font-weight: 600; color: var(--gold); }
+  .vote-card p, .vote-card li { color: var(--white-dim); font-size: 0.85rem; line-height: 1.8; }
+  .vote-card ol, .vote-card ul { padding-left: 18px; }
+  .vote-card li { margin-bottom: 6px; }
+  .vote-card strong { color: var(--white); }
+
+  .qr-box {
+    background: var(--black-2); border: 1px dashed rgba(212,175,55,0.3);
+    border-radius: 12px; padding: 20px; text-align: center; margin-top: 16px;
+  }
+  .qr-box img { width: 160px; height: 160px; object-fit: contain; border-radius: 8px; background: #fff; padding: 8px; margin-bottom: 10px; }
+  .qr-box p { font-size: 0.75rem; color: var(--white-dim); }
+
+  /* ===== SOCIAL ===== */
+  .social-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .social-card {
+    background: var(--black-3); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px; padding: 20px; text-align: center; text-decoration: none;
+    color: var(--white); transition: all 0.2s;
+  }
+  .social-card:active { transform: scale(0.97); }
+  .social-card .icon { font-size: 2rem; margin-bottom: 8px; }
+  .social-card h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+  .social-card span { font-size: 0.7rem; color: var(--white-dim); }
+  .social-card.fb { border-color: rgba(24,119,242,0.3); }
+  .social-card.ig { border-color: rgba(220,39,67,0.3); }
+  .social-card.esewa { border-color: rgba(46,204,113,0.3); }
+  .social-card.web { border-color: rgba(212,175,55,0.3); }
+
+  /* ===== STORY ===== */
+  .story-card {
+    background: var(--black-3); border-left: 3px solid var(--red);
+    border-radius: 0 14px 14px 0; padding: 28px;
+    position: relative;
+  }
+  .story-card p {
+    font-size: 0.9rem; line-height: 1.9; color: var(--white-dim); margin-bottom: 14px;
+  }
+  .story-card p strong { color: var(--white); }
+  .story-card .quote-mark {
+    font-size: 4rem; color: rgba(192,33,46,0.15); position: absolute; top: 4px; left: 16px; line-height: 1; font-family: serif;
+  }
+
+  /* ===== FOOTER CTA ===== */
+  .footer-cta {
+    background: linear-gradient(135deg, var(--red) 0%, #8B0000 100%);
+    padding: 40px 20px; text-align: center;
+  }
+  .footer-cta h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+  .footer-cta p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 20px; }
+
+  /* ===== BOTTOM NAV ===== */
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(10,10,10,0.95); backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(212,175,55,0.15);
+    display: flex; justify-content: space-around; padding: 8px 0 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+  .bottom-nav a {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    color: var(--white-dim); text-decoration: none; font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.5px; padding: 4px 12px; border-radius: 8px; transition: color 0.2s;
+  }
+  .bottom-nav a .nav-icon { font-size: 1.3rem; }
+  .bottom-nav a.active { color: var(--gold); }
+
+  /* ===== HIDE/SHOW per language ===== */
+  body[data-lang="en"] .np { display: none !important; }
+  body[data-lang="np"] .en { display: none !important; }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate { animation: fadeUp 0.6s ease-out both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (min-width: 768px) {
+    .hero-img { width: 240px; height: 240px; }
+    .gallery-item { flex: 0 0 320px; }
+    .gallery-item img { height: 420px; }
+    .social-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>
+</head>
+<body data-lang="en">
+
+<!-- LANGUAGE TOGGLE -->
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('np')">नेपाली</button>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <img src="689477255_4441358792812191_8505866714779797830_n.jpg" alt="Kriti Shakya" class="hero-img animate">
+  <div class="hero-badge animate delay-1">
+    <span>👑</span>
+    <span class="en">Contestant #23 · Girls Group</span>
+    <span class="np">प्रतियोगी #23 · केटीहरू समूह</span>
+  </div>
+  <h1 class="hero-name animate delay-1">Kriti Shakya</h1>
+  <p class="hero-contest animate delay-2">
+    <span class="en">Mr. & Miss SEE Icon 2026 · Season 13</span>
+    <span class="np">मिस्टर एन्ड मिस SEE आइकन २०२६ · सिजन १३</span>
+  </p>
+
+  <div class="hero-countdown animate delay-2" id="countdown">
+    <div class="cd-box"><span class="cd-num" id="cd-days">--</span><span class="cd-label en">Days</span><span class="cd-label np">दिन</span></div>
+    <div class="cd-box"><span class="cd-num" id="cd-hours">--</span><span class="cd-label en">Hours</span><span class="cd-label np">घण्टा</span></div>
+    <div class="cd-box"><span class="cd-num" id="cd-mins">--</span><span class="cd-label en">Mins</span><span class="cd-label np">मिनेट</span></div>
+    <div class="cd-box"><span class="cd-num" id="cd-secs">--</span><span class="cd-label en">Secs</span><span class="cd-label np">सेकेन्ड</span></div>
+  </div>
+
+  <p class="hero-deadline animate delay-3">
+    <span class="en">🗳 Voting closes <strong>June 6, 2026 at 2:00 PM</strong><br>Voting open from Nepal & Abroad</span>
+    <span class="np">🗳 मतदान <strong>जुन ६, २०२६ दिउँसो २ बजे</strong> सम्म<br>नेपाल र विदेशबाट मतदान गर्न सकिन्छ</span>
+  </p>
+
+  <a href="https://aventoz.com/candidates/69f6ce766cbdb/69f6ce9d1b559" target="_blank" class="btn-primary animate delay-3">
+    <span>🗳</span>
+    <span class="en">Vote for Kriti Now</span>
+    <span class="np">कृतिको लागि मतदान गर्नुहोस्</span>
+  </a>
+  <a href="#video" class="btn-secondary animate delay-3">
+    <span>▶️</span>
+    <span class="en">Watch Her Video</span>
+    <span class="np">उनको भिडियो हेर्नुहोस्</span>
+  </a>
+</div>
+
+<!-- VIDEO SECTION -->
+<section id="video">
+  <div class="section-header">
+    <span class="section-tag en">✦ Her Introduction</span>
+    <span class="section-tag np">✦ उनको परिचय</span>
+    <h2 class="section-title">
+      <span class="en">Watch Kriti</span>
+      <span class="np">कृतिलाई हेर्नुहोस्</span>
+    </h2>
+    <p class="section-desc">
+      <span class="en">Hear her story and why she's competing in SEE Icon 2026.</span>
+      <span class="np">उनको कथा सुन्नुहोस् र SEE आइकन २०२६ मा किन प्रतिस्पर्धा गरिरहेकी छिन्।</span>
+    </p>
+  </div>
+  <div class="video-container">
+    <video controls poster="Kriti Profile.png" preload="metadata" playsinline>
+      <source src="AQNqpt-tqj1zosrCmWF-Q2g3c1cLc7eD46fSo3jE7a8xZTMs6pKMObfNT4oQCPRHHgYimfltYQJifU2Lb6QzeRIBXT7BLOMt-Km-Di-NYBbSaA.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<!-- PHOTOS -->
+<section id="photos">
+  <div class="section-header">
+    <span class="section-tag en">✦ Gallery</span>
+    <span class="section-tag np">✦ ग्यालरी</span>
+    <h2 class="section-title">
+      <span class="en">Photos</span>
+      <span class="np">फोटोहरू</span>
+    </h2>
+    <p class="section-desc">
+      <span class="en">Swipe to see more of Kriti's photoshoot for SEE Icon 2026.</span>
+      <span class="np">SEE आइकन २०२६ को लागि कृतिको फोटोशूट हेर्न स्वाइप गर्नुहोस्।</span>
+    </p>
+  </div>
+  <div class="gallery-scroll">
+    <div class="gallery-item">
+      <img src="689477255_4441358792812191_8505866714779797830_n.jpg" alt="Kriti Shakya Traditional">
+      <div class="caption">
+        <span class="en">Traditional Attire</span>
+        <span class="np">पारम्परिक पोशाक</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="687782840_4437705599844177_1490988184151109827_n.jpg" alt="Kriti Shakya SEE Icon">
+      <div class="caption">
+        <span class="en">SEE Icon 2026</span>
+        <span class="np">SEE आइकन २०२६</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="Kriti Profile.png" alt="Kriti Shakya Profile">
+      <div class="caption">
+        <span class="en">Profile Photo</span>
+        <span class="np">प्रोफाइल फोटो</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO VOTE -->
+<section id="vote">
+  <div class="section-header">
+    <span class="section-tag en">✦ How to Vote</span>
+    <span class="section-tag np">✦ मतदान कसरी गर्ने</span>
+    <h2 class="section-title">
+      <span class="en">Vote for Kriti</span>
+      <span class="np">कृतिको लागि मतदान गर्नुहोस्</span>
+    </h2>
+    <p class="section-desc">
+      <span class="en">Choose any method below. Voting is open from Nepal and abroad.</span>
+      <span class="np">तलको कुनै पनि विधि छान्नुहोस्। नेपाल र विदेशबाट मतदान गर्न सकिन्छ।</span>
+    </p>
+  </div>
+
+  <!-- Method 1: Website -->
+  <div class="vote-card">
+    <div class="vote-card-header">
+      <div class="vote-icon">🌐</div>
+      <div>
+        <h3 class="en">Website Voting</h3>
+        <h3 class="np">वेबसाइटबाट मतदान</h3>
+      </div>
+    </div>
+    <ol>
+      <li class="en">Visit <strong>aventoz.com</strong></li>
+      <li class="np"><strong>aventoz.com</strong> मा जानुहोस्</li>
+      <li class="en">Click "VOTING" tab</li>
+      <li class="np">"VOTING" ट्याबमा क्लिक गर्नुहोस्</li>
+      <li class="en">Select "Mr. & Miss SEE Icon 2026 Season 13"</li>
+      <li class="np">"Mr. & Miss SEE Icon 2026 Season 13" छान्नुहोस्</li>
+      <li class="en">Choose "Girls Group" → Search <strong>Kriti Shakya</strong></li>
+      <li class="np">"Girls Group" छान्नुहोस् → <strong>Kriti Shakya</strong> खोज्नुहोस्</li>
+    </ol>
+    <a href="https://aventoz.com/candidates/69f6ce766cbdb/69f6ce9d1b559" target="_blank" class="btn-primary" style="margin-top:16px; max-width:100%; font-size:0.9rem; padding:14px;">
+      <span class="en">Open Direct Link →</span>
+      <span class="np">प्रत्यक्ष लिङ्क खोल्नुहोस् →</span>
+    </a>
+  </div>
+
+  <!-- Method 2: QR Code -->
+  <div class="vote-card">
+    <div class="vote-card-header">
+      <div class="vote-icon">📱</div>
+      <div>
+        <h3 class="en">QR Code Voting</h3>
+        <h3 class="np">QR कोडबाट मतदान</h3>
+      </div>
+    </div>
+    <p class="en">Scan the QR code with your mobile banking app or phone camera to vote directly.</p>
+    <p class="np">आफ्नो मोबाइल बैंकिङ एप वा फोन क्यामेराले QR कोड स्क्यान गरी सीधै मतदान गर्नुहोस्।</p>
+    <div class="qr-box">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Faventoz.com%2Fcandidates%2F69f6ce766cbdb%2F69f6ce9d1b559&color=C0212E&bgcolor=ffffff" alt="Vote QR Code">
+      <p class="en">Scan to vote for Kriti Shakya</p>
+      <p class="np">कृति शाक्यको लागि मतदान गर्न स्क्यान गर्नुहोस्</p>
+    </div>
+  </div>
+
+  <!-- Method 3: eSewa -->
+  <div class="vote-card">
+    <div class="vote-card-header">
+      <div class="vote-icon" style="background:rgba(46,204,113,0.1); border-color:rgba(46,204,113,0.3);">💚</div>
+      <div>
+        <h3 class="en">eSewa Voting</h3>
+        <h3 class="np">eSewa बाट मतदान</h3>
+      </div>
+    </div>
+    <ol>
+      <li class="en">Open <strong>eSewa</strong> app</li>
+      <li class="np"><strong>eSewa</strong> एप खोल्नुहोस्</li>
+      <li class="en">Go to "Voting & Events"</li>
+      <li class="np">"Voting & Events" मा जानुहोस्</li>
+      <li class="en">Select "Mr. & Miss SEE Icon 2026"</li>
+      <li class="np">"Mr. & Miss SEE Icon 2026" छान्नुहोस्</li>
+      <li class="en">Choose "Girls Group" → Vote for <strong>Kriti Sushil Shakya</strong></li>
+      <li class="np">"Girls Group" छान्नुहोस् → <strong>Kriti Sushil Shakya</strong> लाई मतदान गर्नुहोस्</li>
+    </ol>
+  </div>
+
+  <!-- Method 4: Aventoz App -->
+  <div class="vote-card">
+    <div class="vote-card-header">
+      <div class="vote-icon">🅰</div>
+      <div>
+        <h3 class="en">Aventoz App</h3>
+        <h3 class="np">Aventoz एप</h3>
+      </div>
+    </div>
+    <ol>
+      <li class="en">Download <strong>Aventoz</strong> from App/Play Store</li>
+      <li class="np"><strong>Aventoz</strong> App/Play Store बाट डाउनलोड गर्नुहोस्</li>
+      <li class="en">Open "VOTING" section</li>
+      <li class="np">"VOTING" सेक्सन खोल्नुहोस्</li>
+      <li class="en">Select "Mr. & Miss SEE Icon 2026 Season 13"</li>
+      <li class="np">"Mr. & Miss SEE Icon 2026 Season 13" छान्नुहोस्</li>
+      <li class="en">Choose "Girls Group" → Search & vote for <strong>Kriti Shakya</strong></li>
+      <li class="np">"Girls Group" छान्नुहोस् → <strong>Kriti Shakya</strong> खोजी मतदान गर्नुहोस्</li>
+    </ol>
+  </div>
+</section>
+
+<!-- SOCIAL SUPPORT -->
+<section id="social">
+  <div class="section-header">
+    <span class="section-tag en">✦ Support Her</span>
+    <span class="section-tag np">✦ उनलाई सहयोग गर्नुहोस्</span>
+    <h2 class="section-title">
+      <span class="en">Like & Share</span>
+      <span class="np">लाइक र सेयर गर्नुहोस्</span>
+    </h2>
+    <p class="section-desc">
+      <span class="en">Tap any button to open her posts. Like, comment, and share to help spread the word!</span>
+      <span class="np">उनको पोस्ट खोल्न कुनै पनि बटनमा ट्याप गर्नुहोस्। लाइक, कमेन्ट र सेयर गरी सहयोग गर्नुहोस्!</span>
+    </p>
+  </div>
+  <div class="social-grid">
+    <a href="https://www.facebook.com/photo/?fbid=991352250133099&set=pcb.991374160130908" target="_blank" class="social-card fb">
+      <div class="icon">📘</div>
+      <h4 class="en">Facebook</h4>
+      <h4 class="np">फेसबुक</h4>
+      <span class="en">Like & Share</span>
+      <span class="np">लाइक र सेयर</span>
+    </a>
+    <a href="https://www.instagram.com/p/DYENUSGjEkT/" target="_blank" class="social-card ig">
+      <div class="icon">📸</div>
+      <h4 class="en">Instagram</h4>
+      <h4 class="np">इन्स्टाग्राम</h4>
+      <span class="en">Like Post 1</span>
+      <span class="np">पोस्ट १ लाइक</span>
+    </a>
+    <a href="https://www.instagram.com/p/DYENG6_okNG/" target="_blank" class="social-card ig">
+      <div class="icon">✨</div>
+      <h4 class="en">Instagram</h4>
+      <h4 class="np">इन्स्टाग्राम</h4>
+      <span class="en">Like Post 2</span>
+      <span class="np">पोस्ट २ लाइक</span>
+    </a>
+    <a href="https://www.instagram.com/p/DYENJuPjH_D/" target="_blank" class="social-card ig">
+      <div class="icon">💫</div>
+      <h4 class="en">Instagram</h4>
+      <h4 class="np">इन्स्टाग्राम</h4>
+      <span class="en">Like Post 3</span>
+      <span class="np">पोस्ट ३ लाइक</span>
+    </a>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="section-header">
+    <span class="section-tag en">✦ Her Journey</span>
+    <span class="section-tag np">✦ उनको यात्रा</span>
+    <h2 class="section-title">
+      <span class="en">Kriti's Story</span>
+      <span class="np">कृतिको कथा</span>
+    </h2>
+  </div>
+  <div class="story-card">
+    <div class="quote-mark">"</div>
+    <p class="en">
+      From winning a place in <strong>Kids Icon 2020</strong> to now stepping forward for <strong>SEE Icon 2026</strong>, Kriti Shakya has grown into a confident and inspiring young lady. Her journey proves that <strong>limits are meant to be crossed.</strong>
+    </p>
+    <p class="np">
+      <strong>किड्स आइकन २०२०</strong> मा स्थान जित्दै अहिले <strong>SEE आइकन २०२६</strong> को लागि अगाडि बढ्दै, कृति शाक्य एक आत्मविश्वासी र प्रेरणादायी युवती बनेकी छिन्। उनको यात्राले प्रमाणित गर्छ कि <strong>सीमाहरू पार गर्नैपर्छ।</strong>
+    </p>
+    <p class="en">
+      She takes this platform not only as an opportunity for herself, but as a chance to inspire other girls to come forward, break barriers, and challenge the stereotypical society we still live in. She is <strong>confident, fearless</strong>, and proudly embraces who she is.
+    </p>
+    <p class="np">
+      उनले यो मञ्चलाई आफ्नो लागि मात्र अवसरको रूपमा नभई अन्य केटीहरूलाई अगाडि आउन, बाधाहरू तोड्न र हामी अझै बाँचिरहेको रूढिवादी समाजलाई चुनौती दिन प्रेरित गर्ने अवसरको रूपमा लिएकी छिन्। उनी <strong>आत्मविश्वासी, निडर</strong> छिन् र गर्वका साथ आफूलाई स्वीकार गर्छिन्।
+    </p>
+    <p class="en" style="margin-bottom:0;">
+      Please like, share, and vote. Let's support dreams, confidence, and breaking barriers together. ❤️
+    </p>
+    <p class="np" style="margin-bottom:0;">
+      कृपया लाइक, सेयर र मतदान गर्नुहोस्। सपना, आत्मविश्वास र बाधाहरू तोड्न सँगै सहयोग गरौं। ❤️
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta" id="contact">
+  <h2>
+    <span class="en">Every Vote Counts!</span>
+    <span class="np">हरेक मत मायने राख्छ!</span>
+  </h2>
+  <p>
+    <span class="en">Voting closes June 6, 2026 at 2:00 PM</span>
+    <span class="np">मतदान जुन ६, २०२६ दिउँसो २ बजे सम्म</span>
+  </p>
+  <a href="https://aventoz.com/candidates/69f6ce766cbdb/69f6ce9d1b559" target="_blank" class="btn-primary" style="background:#fff; color:var(--red); max-width:280px;">
+    <span>🗳</span>
+    <span class="en">Cast Your Vote Now</span>
+    <span class="np">अहिले नै मतदान गर्नुहोस्</span>
+  </a>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="#home" class="active" onclick="setActive(this)">
+    <span class="nav-icon">🏠</span>
+    <span class="en">Home</span>
+    <span class="np">गृहपृष्ठ</span>
+  </a>
+  <a href="#video" onclick="setActive(this)">
+    <span class="nav-icon">🎬</span>
+    <span class="en">Video</span>
+    <span class="np">भिडियो</span>
+  </a>
+  <a href="#vote" onclick="setActive(this)">
+    <span class="nav-icon">🗳</span>
+    <span class="en">Vote</span>
+    <span class="np">मतदान</span>
+  </a>
+  <a href="#social" onclick="setActive(this)">
+    <span class="nav-icon">❤️</span>
+    <span class="en">Support</span>
+    <span class="np">सहयोग</span>
+  </a>
+</nav>
+
+<script>
+  // Language toggle
+  function setLang(lang) {
+    document.body.setAttribute('data-lang', lang);
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  // Bottom nav active state
+  function setActive(el) {
+    document.querySelectorAll('.bottom-nav a').forEach(a => a.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Countdown timer to June 6, 2026 14:00 NPT (UTC+5:45)
+  const deadline = new Date('2026-06-06T08:15:00Z');
+  function updateCountdown() {
+    const now = new Date();
+    const diff = deadline - now;
+    if (diff <= 0) {
+      ['days','hours','mins','secs'].forEach(u => document.getElementById('cd-'+u).textContent = '00');
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Auto-update nav on scroll
+  const sections = ['home','video','vote','social'];
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 200) current = id;
+    });
+    if (current) {
+      document.querySelectorAll('.bottom-nav a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#'+current);
+      });
+    }
+  });
+</script>
+</body>
+</html>
